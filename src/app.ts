@@ -1,8 +1,8 @@
-import { customElement, bindable, inject, bindingMode } from 'aurelia-framework';
 export class App {
   yourInput = '';
   yourInputsArr = [];
 
+/***** Adding the input to the list with regex, empty and duplicate value check ******/
   addYourInput() {
     var regex = /^[<>/:&+%;\"]|\.\w{2,4}$/;
     var isValid = regex.test(this.yourInput);
@@ -21,29 +21,30 @@ export class App {
         }
       }
       else {
-        this.launch_toast("Please enter some value")
+        this.launch_toast("Please enter some value!, It's empty")
       }
     } else {
-      this.launch_toast("This characters are not allowed");
+      this.launch_toast("This character is not allowed");
       this.yourInput = '';
       return;
     }
 
   }
 
+  /***** Duplicate Value removal check function */
   removeDuplicatesFromArr() {
     let uniq = this.yourInputsArr.filter(function (value, index, array) {
       return array.indexOf(value) == index;
     });
     this.yourInputsArr = uniq;
   }
-
-  removeTodo(inputs) {
+/**** delete the record from the input */
+  removeInput(inputs) {
     this.yourInputsArr.forEach((item, index) => {
       if (item === inputs) this.yourInputsArr.splice(index, 1);
     });
   }
-
+/****Identifying and removing the dupicating from the array */
   hasDuplicatesArr(array) {
     return (new Set(array)).size !== array.length;
   }
@@ -57,9 +58,5 @@ export class App {
       x.classList.remove("show");
     }, 3000);
   }
-
-
-
-
 }
 

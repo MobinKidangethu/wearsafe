@@ -1,15 +1,11 @@
 <template>
   <require from="bootstrap/dist/css/bootstrap.min.css"></require>
   <require from="./app.css"></require>
-
-    <!-- <h1>${message}</h1> -->
-    <!-- Just an image -->
-<!-- As a heading -->
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">WearSafe</span>
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">WearSafe</span>
 </nav>
 <div class="main-content">
-    <form action="#" autocomplete="off">
+    <form  autocomplete="off">
       <fieldset>
         <input id="first"  type="text" name="yourInput" value.bind="yourInput" maxlength.bind="140" autocomplete="off" required>
         <label for="first">Your Input !</label>
@@ -27,7 +23,7 @@
           <tbody>
             <tr repeat.for="Input of yourInputsArr">
               <th class="break">${Input}</th>
-              <th class="centre"><button class="delBtn"  click.trigger="removeTodo(Input)">DELETE</button></th>
+              <th class="centre"><button class="delBtn"  click.trigger="removeInput(Input)">DELETE</button></th>
             </tr>
           </tbody>
         </table>
